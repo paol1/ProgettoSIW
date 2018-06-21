@@ -1,0 +1,151 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<head>
+<title>Customer</title>
+<style>
+input.hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+#profile-image1 {
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #03b1ce;
+}
+
+.tital {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.bot-border {
+	border-bottom: 1px #f8f8f8 solid;
+	margin: 5px 0 5px 0
+}
+
+form {
+margin-bottom: 20px;
+margin-top: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+
+			<div class="col-md-7 ">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Info Centro</h4>
+					</div>
+					<div class="panel-body">
+
+						<div class="box box-info">
+
+							<div class="box-body">
+								<div class="col-sm-6">
+									<div align="center"></div>
+								</div>
+
+							</div>
+
+							<br>
+
+							<!-- /input-group -->
+						</div>
+						<div class="col-sm-6">
+							<h4 style="color: #00b1b1;" th:text="${centro.nome}"></h4>
+							<span><p>Centro</p></span>
+						</div>
+						<div class="clearfix"></div>
+						<hr style="margin: 5px 0 5px 0;">
+
+
+
+
+						<div class="col-sm-5 col-xs-6 tital ">Nome:</div>
+						<div class="col-sm-7" th:text="${centro.nome}"></div>
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Indirizzo:</div>
+						<div class="col-sm-7" th:text="${centro.indirizzo}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Numero Telefono</div>
+						<div class="col-sm-7" th:text="${centro.numTelefono}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Email:</div>
+						<div class="col-sm-7" th:text="${centro.email}"></div>
+						
+							<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Capienza:</div>
+						<div class="col-sm-7" th:text="${centro.capienza}"></div>
+
+
+
+						<div>
+							<form
+								th:action="@{'/confermaAttivitaCentro' + '/' + ${centro.id}}"
+								method="get" th:object="${centro}">
+								<select th:field="*{attivitaList[__${count}__].id}">
+									<option th:each="att: ${activities}" th:text="${att.nome}"
+										th:value="${att.id}">
+								</select>
+								<div>
+									<button type="submit">Submit</button>
+								</div>
+							</form>
+							<div>
+								<a
+									th:href="@{'/mostraListaAttivitaCentro' + '/' + ${centro.id}}">Attivita</a>								
+							</div>
+							
+								<div>
+								<a
+									th:href="@{/centroList}">Lista Centri</a>	
+								
+							</div>
+							<div>
+								<a
+									th:href="@{/addCentro}">Inserisci Nuovo Centro</a>	
+								
+							</div>
+							
+							<div>
+								<a
+									th:href="@{/indice}">Ritorna alla pagina iniziale</a>	
+								
+							</div>
+							
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<head>
+<title>Customer</title>
+<style>
+input.hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+#profile-image1 {
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #03b1ce;
+}
+
+.tital {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.bot-border {
+	border-bottom: 1px #f8f8f8 solid;
+	margin: 5px 0 5px 0
+}
+
+form {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+
+			<div class="col-md-7 ">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Info Attivita</h4>
+					</div>
+					<div class="panel-body">
+
+						<div class="box box-info">
+
+							<div class="box-body">
+								<div class="col-sm-6">
+									<div align="center"></div>
+								</div>
+
+							</div>
+
+							<br>
+
+							<!-- /input-group -->
+						</div>
+						<div class="col-sm-6">
+							<h4 style="color: #00b1b1;" th:text="${attivita.nome}"></h4>
+							<span><p>Attivita</p></span>
+						</div>
+						<div class="clearfix"></div>
+						<hr style="margin: 5px 0 5px 0;">
+
+
+						<div class="col-sm-5 col-xs-6 tital ">Nome:</div>
+						<div class="col-sm-7" th:text="${attivita.nome}"></div>
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Data:</div>
+						<div class="col-sm-7"
+							th:text="${#dates.format(attivita.dataOraAttivita, 'dd-MMM-yyyy')}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Ora:</div>
+						<div class="col-sm-7"
+							th:text="${#dates.format(attivita.dataOraAttivita, 'HH-mm')}"></div>
+						<div>
+							<a th:href="@{'/allievoList' + '/' + ${attivita.id}}">Partecipanti</a>
+						</div>
+
+						<div>
+							<a th:href="@{/attivitaList}">Lista Attivita</a>
+						</div>
+						<div>
+							<a th:href="@{/addAttivita}">Inserisci Attivita</a>
+						</div>
+						<div>
+							<a th:href="@{/indice3}">Ritorna alla pagina iniziale</a>
+						</div>
+
+
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

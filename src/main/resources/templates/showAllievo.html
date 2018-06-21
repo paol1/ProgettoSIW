@@ -1,0 +1,141 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<head>
+<title>Customer</title>
+<style>              
+input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#profile-image1 {
+    cursor: pointer;
+  
+     width: 100px;
+    height: 100px;
+	border:2px solid #03b1ce ;}
+	.tital{ font-size:16px; font-weight:500;}
+	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+
+			<div class="col-md-7 ">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Profilo Allievo</h4>
+					</div>
+					<div class="panel-body">
+
+						<div class="box box-info">
+
+							<div class="box-body">
+								<div class="col-sm-6">
+									<div align="center">
+										<img alt="User Pic"
+											src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+											id="profile-image1" class="img-circle img-responsive">
+
+									</div>
+								</div>
+
+							</div>
+
+							<br>
+
+							<!-- /input-group -->
+						</div>
+						<div class="col-sm-6">
+							<h4 style="color: #00b1b1;" th:text="${allievo.nome} + ' ' + ${allievo.cognome}"></h4>
+						 <span><p>Allievo</p></span>
+						</div>
+						<div class="clearfix"></div>
+						<hr style="margin: 5px 0 5px 0;">
+
+
+
+
+						<div class="col-sm-5 col-xs-6 tital ">Nome:</div>
+						<div class="col-sm-7" th:text="${allievo.nome}"></div>
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Cognome:</div>
+						<div class="col-sm-7" th:text="${allievo.cognome}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Data di Nascita:</div>
+						<div class="col-sm-7" th:text="${allievo.dataNascita}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Luogo di Nascita:</div>
+						<div class="col-sm-7" th:text="${allievo.luogoNascita}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Email:</div>
+						<div class="col-sm-7" th:text="${allievo.email}"></div>
+
+						<div class="clearfix"></div>
+						<div class="bot-border"></div>
+
+						<div class="col-sm-5 col-xs-6 tital ">Telefono:</div>
+						<div class="col-sm-7" th:text="${allievo.telefono}"></div>
+
+						<div>
+							<form
+								th:action="@{'/confermaAllievoAttivita' + '/' + ${allievo.id}}"
+								method="get" th:object="${allievo}">
+								<select th:field="*{attivitaList[__${count}__].id}">
+									<option th:each="att: ${activities}" th:text="${att.nome}"
+										th:value="${att.id}">
+								</select>
+								<div>
+									<button type="submit">Invia</button>
+								</div>
+							</form>
+							<div>
+								<a th:href="@{'/mostraListaAttivita' + '/' + ${allievo.id}}">Iscrizioni</a>
+							</div>
+									<div>
+								<a
+									th:href="@{/allievi}">Lista Allievi</a>	
+								
+							</div>
+							<div>
+								<a
+									th:href="@{/addAllievo}">Inserisci Nuovo Allievo</a>	
+								
+							</div>
+							
+							<div>
+								<a
+									th:href="@{/indice2}">Ritorna alla pagina iniziale</a>	
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
